@@ -8,7 +8,8 @@
     },
     "autoload": {
         "psr-4": {
-            "sapp\\": "src/"
+            "sapp\\": "src/",
+            "sapp\\test\\": "test/"
         }
     },
     "authors": [

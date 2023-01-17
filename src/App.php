@@ -49,7 +49,7 @@ class App
 
         $controller_namespace = $this->config['controllerNamespace'];
         $c_name               = ucfirst($c_name);
-        $controller           = "{$controller_namespace}\\{$c_name}";
+        $controller           = "{$controller_namespace}\\{$c_name}";dump($controller);
         /** @var Controller $object */
         $object           = new $controller();
         $this->controller = $object;
@@ -60,7 +60,7 @@ class App
     public function load()
     {
         //配置文件
-        $this->config     = require './config.php';
+        $this->config     = require $this->sappPath . 'config.php';
         $user_config_file = $this->rootPath . "config/config.php";
         if (file_exists($user_config_file)) {
             $user_config  = require $user_config_file;
@@ -68,7 +68,7 @@ class App
         }
 
         //自定义函数
-        require_once './function.php';
+        require_once $this->sappPath . 'function.php';
     }
 
     /**
