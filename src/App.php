@@ -2,8 +2,6 @@
 
 namespace sapp;
 
-use app\common\Controller;
-
 class App
 {
     public $act;
@@ -49,10 +47,9 @@ class App
 
         $controller_namespace = $this->config['controllerNamespace'];
         $c_name               = ucfirst($c_name);
-        $controller           = "{$controller_namespace}\\{$c_name}";dump($controller);
-        /** @var Controller $object */
-        $object           = new $controller();
-        $this->controller = $object;
+        $controller           = "{$controller_namespace}\\{$c_name}";
+        $object               = new $controller();
+        $this->controller     = $object;
 
         call_user_func_array([$object, $a_name], $this->args);
     }
@@ -60,7 +57,7 @@ class App
     public function load()
     {
         //配置文件
-        $this->config     = require $this->sappPath . 'config.php';
+        $this->config     = require __DIR__ . '/config.php';
         $user_config_file = $this->rootPath . "config/config.php";
         if (file_exists($user_config_file)) {
             $user_config  = require $user_config_file;
@@ -68,7 +65,7 @@ class App
         }
 
         //自定义函数
-        require_once $this->sappPath . 'function.php';
+        require_once __DIR__ . '/function.php';
     }
 
     /**
