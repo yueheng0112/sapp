@@ -75,7 +75,7 @@ class App
      */
     protected function getDefaultRootPath(): string
     {
-        $path = dirname(dirname(dirname($this->sappPath)));
+        $path = dirname(dirname(dirname(dirname($this->sappPath))));
         return $path . DIRECTORY_SEPARATOR;
     }
 }
